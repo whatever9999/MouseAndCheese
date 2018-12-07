@@ -11,7 +11,7 @@ using namespace std;
 //Note that 'Char' is added to the end of each of these chars due to the skeleton code making use of this in the cMaze class (m_floorChar, m_wallChar, m_startChar, m_exitChar and m_errorChar) - For consistency
 //Also for consistency with the skeleton program all constants make use of capitilisation and underscores whereas the rest of the program uses camelCase
 const char MOUSE_CHAR = 'M';
-const int ONE_BLOCK = 1;
+const int BLOCK = 1;
 const char INCORRECT_ROUTE_CHAR = 'X'; // Note that X and O were chosen for incorrectRouteChar and visitedChar because they are easy to differentiate from each other in the console window
 const char VISITED_CHAR = 'O';
 

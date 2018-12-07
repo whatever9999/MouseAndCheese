@@ -28,8 +28,8 @@ char Maze::getPositionValue(int col, int row) {
 void Maze::DisplayMouse(cVector2 position) {
 	setPositionValue(position.x, position.y, MOUSE_CHAR);
 }
-COORD Maze::GetConsoleCursorPosition()
-{
+
+COORD Maze::GetConsoleCursorPosition() {
 	CONSOLE_SCREEN_BUFFER_INFO cbsi;
 	if (GetConsoleScreenBufferInfo(hOutput, &cbsi))
 	{

@@ -15,16 +15,16 @@ void Mouse::MakeMove(Maze &maze) {
 	cVector2 currentPos = GetPos();
 
 	//Get the values of chars around the mouse and their position
-	cVector2 left = cVector2(currentPos.x - ONE_BLOCK, currentPos.y);
+	cVector2 left = cVector2(currentPos.x - BLOCK, currentPos.y);
 	char leftChar = maze.getPositionValue(left.x, left.y);
 
-	cVector2 right = cVector2(currentPos.x + ONE_BLOCK, currentPos.y);
+	cVector2 right = cVector2(currentPos.x + BLOCK, currentPos.y);
 	char rightChar = maze.getPositionValue(right.x, right.y);
 
-	cVector2 up = cVector2(currentPos.x, currentPos.y - ONE_BLOCK);
+	cVector2 up = cVector2(currentPos.x, currentPos.y - BLOCK);
 	char upChar = maze.getPositionValue(up.x, up.y);
 
-	cVector2 down = cVector2(currentPos.x, currentPos.y + ONE_BLOCK);
+	cVector2 down = cVector2(currentPos.x, currentPos.y + BLOCK);
 	char downChar = maze.getPositionValue(down.x, down.y);
 
 	//Get the last position of the mouse if if is not empty
