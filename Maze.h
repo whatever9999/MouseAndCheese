@@ -26,9 +26,7 @@ private:
 public:
 	void setCurrentPathChar(char newChar) {currentPathChar = newChar;}
 	//Change the maze's data and appearance to the char value
-	void setHandle(HANDLE hConsoleOutput) {
-		hOutput = hConsoleOutput;
-	}
+	void setHandle(HANDLE hConsoleOutput) {hOutput = hConsoleOutput;}
 	char setPositionValue(int col, int row, char value);
 	//Change the maze's data and appearance to the currentPathChar value
 	char setPositionValue(int col, int row);

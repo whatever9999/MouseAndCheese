@@ -27,11 +27,6 @@ void Mouse::MakeMove(Maze &maze) {
 	cVector2 down = cVector2(currentPos.x, currentPos.y + BLOCK);
 	char downChar = maze.getPositionValue(down.x, down.y);
 
-	//Get the last position of the mouse if if is not empty
-	if (isEmpty()) {
-		cVector2 previous = GetPreviousPos();
-	}
-
 
 	maze.setCurrentPathChar(VISITED_CHAR);
 	//Check Left
