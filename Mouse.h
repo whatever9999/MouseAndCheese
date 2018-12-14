@@ -13,16 +13,25 @@ using namespace std;
 class Mouse {
 private:
 	//Stack that stores the path the mouse has taken to be used when the mouse reaches a dead end to back track
+	char mouseChar = 'M';
+	int deadEnds = 0;
+	bool inDeadEnd = false;
 	stack<cVector2> path;
 	bool hasFoundCheese = false;
 	cVector2 currentPos = cVector2(0, 0);
 
 public:
-	cVector2 GetPreviousPos() {return path.top();}
-	cVector2 GetPos() {return currentPos;}
-	bool FoundCheese() {return hasFoundCheese;}
-	bool isEmpty() {return path.empty();}
-	void HasFoundCheese() {hasFoundCheese = true;}
+	cVector2 GetPreviousPos() { return path.top(); }
+	cVector2 GetPos() { return currentPos; }
+	bool FoundCheese() { return hasFoundCheese; }
+	bool isEmpty() { return path.empty(); }
+	void HasFoundCheese() { hasFoundCheese = true; }
+	char GetMouseChar() { return mouseChar; }
+	void SetMouseChar(char newMouseChar) {mouseChar = newMouseChar;}
+	void AddDeadEnd() { deadEnds++; }
+	int GetDeadEnds() { return deadEnds; }
+	void DeadEnd(bool state) { inDeadEnd = state; }
+	bool InDeadEnd() { return inDeadEnd; }
 
 	//Put a current position onto the path stack so current position can hold where the mouse currently is
 	void MoveTo(const cVector2 toPos);

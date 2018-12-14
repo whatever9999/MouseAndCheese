@@ -28,32 +28,40 @@ void Mouse::MakeMove(Maze &maze) {
 	char downChar = maze.getPositionValue(down.x, down.y);
 
 
-	maze.setCurrentPathChar(VISITED_CHAR);
+	maze.setCurrentPathChar(maze.GetVisitedChar());
 	//Check Left
 	if (CheckPos(maze, leftChar)) {
+		DeadEnd(false);
 		MoveInMaze(maze, left);
 	}
 	//Check Right
 	else if (CheckPos(maze, rightChar)) {
+		DeadEnd(false);
 		MoveInMaze(maze, right);
 	}
 	//Check Up
 	else if (CheckPos(maze, upChar)) {
+		DeadEnd(false);
 		MoveInMaze(maze, up);
 	}
 	//Check Down
 	else if (CheckPos(maze, downChar)) {
+		DeadEnd(false);
 		MoveInMaze(maze, down);
 	}
 	//Go Back
 	else {
+		if (!InDeadEnd()) {
+			AddDeadEnd();
+		}
+		DeadEnd(true);
 		//Since there are no new tiles to visit, go back to the mouse's last position
-		maze.setCurrentPathChar(INCORRECT_ROUTE_CHAR);
+		maze.setCurrentPathChar(maze.GetIncorrectRouteChar());
 		maze.setPositionValue(currentPos.x, currentPos.y);
 		GoBack();
 		currentPos = GetPos();
 		//NOTE: MoveTo and DisplayMouse are not used here because the stack should not store the last position of the mouse when backtracking
-		maze.setPositionValue(currentPos.x, currentPos.y, MOUSE_CHAR);
+		maze.setPositionValue(currentPos.x, currentPos.y, mouseChar);
 	}
 }
 void Mouse::MoveInMaze(Maze &maze, cVector2 destination) {
@@ -62,7 +70,7 @@ void Mouse::MoveInMaze(Maze &maze, cVector2 destination) {
 	//Add mouse's current position to the stack then change it to the new position
 	MoveTo(destination);
 	//Set the char of the new position to the mouse
-	maze.DisplayMouse(currentPos);
+	maze.DisplayMouse(currentPos, mouseChar);
 }
 bool Mouse::CheckPos(Maze &maze, char posChar) {
 	//See if the char being checked can be walked on or if it is the cheese
